@@ -1,0 +1,18 @@
+[package]
+name = "libpag-sys"
+version = "0.0.0"
+edition = "2021"
+build = "build.rs"
+keywords = ["ffi", "libpag"]
+rust-version = "1.66"
+
+[lib]
+name = "libpag_sys"
+
+[dependencies]
+cxx = "1.0"
+autocxx = "0.22.3"
+
+[build-dependencies]
+autocxx-build = "0.22.3"
+miette = { version="4.3", features=["fancy"] }

@@ -1,0 +1,33 @@
+[package]
+name = "gst-pag"
+version = "0.0.0"
+authors = ["lj"]
+repository = "gst-pag.git"
+license = "MIT"
+edition = "2021"
+rust-version = "1.66"
+description = "GStreamer Pag Plugin"
+
+[dependencies]
+glib = { git = "https://github.com/gtk-rs/gtk-rs-core" }
+gst = { package = "gstreamer", git = "https://gitlab.freedesktop.org/gstreamer/gstreamer-rs" }
+gst-base = { package = "gstreamer-base", git = "https://gitlab.freedesktop.org/gstreamer/gstreamer-rs" }
+gst-audio = { package = "gstreamer-audio", git = "https://gitlab.freedesktop.org/gstreamer/gstreamer-rs" }
+gst-video = { package = "gstreamer-video", git = "https://gitlab.freedesktop.org/gstreamer/gstreamer-rs" }
+gst-app = { package = "gstreamer-app", git = "https://gitlab.freedesktop.org/gstreamer/gstreamer-rs" }
+gst-player = { package = "gstreamer-player", git = "https://gitlab.freedesktop.org/gstreamer/gstreamer-rs" }
+byte-slice-cast = "1.0"
+num-traits = "0.2"
+once_cell = "1.0"
+libpag = { package = "libpag", path = "../pag" }
+anyhow = "1.0"
+derive_more = "0.99.5"
+lazy_static = "1.4.0"
+
+[lib]
+name = "gstpagsrc"
+crate-type = ["cdylib", "rlib"]
+path = "src/lib.rs"
+
+[build-dependencies]
+gst-plugin-version-helper = {  git = "https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs" }
