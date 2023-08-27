@@ -1,3 +1,4 @@
 [submodule "third_party/libpag"]
 	path = third_party/libpag
 	url = https://github.com/Tencent/libpag.git
+	ignore = dirty
