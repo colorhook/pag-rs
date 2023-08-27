@@ -13,7 +13,7 @@ crate-type = ["cdylib"]
 [dependencies]
 libpag = { package = "libpag", path = "../pag" }
 gst-pag = { package = "gst-pag", path = "../gst-pag" }
-gst = { package = "gstreamer", git = "https://gitlab.freedesktop.org/gstreamer/gstreamer-rs" }
+gst = { package = "gstreamer", git = "https://github.com/sdroege/gstreamer-rs.git" }
 
 [dependencies.neon]
 version = "0.10.1"

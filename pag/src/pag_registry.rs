@@ -1,6 +1,6 @@
 use std::cell::RefCell;
 use std::collections::HashMap;
-use std::ops::{Deref, DerefMut};
+use std::ops::{DerefMut};
 use std::sync::Arc;
 
 use crate::{LayerType, PAGComposition, PAGFile, PAGImage, PAGLayer, PAGMovie, ID};

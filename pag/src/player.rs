@@ -28,9 +28,9 @@ impl fmt::Display for PAGPlayer {
 impl PAGPlayer {
     pub fn new() -> Self {
         let ptr = ffi::pag::PAGPlayer::new().within_unique_ptr();
-        let raw =
-            std::ops::Deref::deref(&ptr) as *const ffi::pag::PAGPlayer as *mut ffi::pag::PAGPlayer;
-        std::mem::forget(raw);
+        // let raw =
+        //     std::ops::Deref::deref(&ptr) as *const ffi::pag::PAGPlayer as *mut ffi::pag::PAGPlayer;
+        // std::mem::forget(raw);
         Self { ptr }
     }
 

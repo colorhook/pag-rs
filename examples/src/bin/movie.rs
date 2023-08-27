@@ -27,7 +27,7 @@ fn example_main() {
 
     let file = format!("{}", assets_dir.join("TextDirection.pag").to_str().unwrap());
     let output = format!("{}", dir.join("session.mp4").to_str().unwrap());
-    let pagfile = PAGFile::from_file(file);
+    let pagfile = PAGFile::from_file(file).unwrap();
 
     // // 图片替换
     // let image_uri = format!("{}", dir.join("frame-first.png").to_str().unwrap());
@@ -43,7 +43,9 @@ fn example_main() {
 
     let mut session = PAGExportSession::new(pagfile, &output);
     // println!("session: {:?}", session);
-    let _ = session.start();
+    let _ = session.start(Some(Box::new(|progress| {
+        println!("progress: {}", progress);
+    })));
 }
 
 fn main() {

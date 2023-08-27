@@ -1,5 +1,4 @@
 use libpag::*;
-use std::path::PathBuf;
 
 fn main() {
     let font = PAGFont::new("", "");

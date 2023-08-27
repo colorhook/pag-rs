@@ -34,6 +34,7 @@ struct ErrorMessage {
 const WIDTH: usize = 750;
 const HEIGHT: usize = 1334;
 
+#[allow(dead_code)]
 struct PagSource {
     video_info: gst_video::VideoInfo,
     current_frame: i32,
@@ -49,7 +50,7 @@ unsafe impl Sync for PagSource {}
 impl PagSource {
     pub fn new(width: i32, height: i32, file: &str) -> Self {
         let surface = PAGSurface::make_offscreen(width, height).unwrap();
-        let pag_file = PAGFile::from_file(file);
+        let pag_file = PAGFile::from_file(file).unwrap();
         let player = PAGPlayer::new();
 
         let fps = pag_file.frame_rate();
@@ -69,7 +70,7 @@ impl PagSource {
             width.try_into().unwrap(),
             height.try_into().unwrap(),
         )
-        .fps(gst::Fraction::new(25, 1))
+        .fps(gst::Fraction::approximate_f32(fps).unwrap())
         .build()
         .expect("Failed to create video info");
 

@@ -9,12 +9,12 @@ edition = "2021"
 libpag = { package = "libpag", path = "../pag" }
 gst-pag = { package = "gst-pag", path = "../gst-pag" }
 glib = { git = "https://github.com/gtk-rs/gtk-rs-core" }
-gst = { package = "gstreamer", git = "https://gitlab.freedesktop.org/gstreamer/gstreamer-rs" }
-gst-base = { package = "gstreamer-base", git = "https://gitlab.freedesktop.org/gstreamer/gstreamer-rs" }
-gst-video = { package = "gstreamer-video", git = "https://gitlab.freedesktop.org/gstreamer/gstreamer-rs" }
-gst-audio = { package = "gstreamer-audio", git = "https://gitlab.freedesktop.org/gstreamer/gstreamer-rs" }
-gst-app = { package = "gstreamer-app", git = "https://gitlab.freedesktop.org/gstreamer/gstreamer-rs" }
-gst-player = { package = "gstreamer-player", git = "https://gitlab.freedesktop.org/gstreamer/gstreamer-rs" }
+gst = { package = "gstreamer", git = "https://github.com/sdroege/gstreamer-rs.git" }
+gst-base = { package = "gstreamer-base", git = "https://github.com/sdroege/gstreamer-rs.git" }
+gst-video = { package = "gstreamer-video", git = "https://github.com/sdroege/gstreamer-rs.git" }
+gst-audio = { package = "gstreamer-audio", git = "https://github.com/sdroege/gstreamer-rs.git" }
+gst-app = { package = "gstreamer-app", git = "https://github.com/sdroege/gstreamer-rs.git" }
+gst-player = { package = "gstreamer-player", git = "https://github.com/sdroege/gstreamer-rs.git" }
 
 skia-safe = "0"
 anyhow = "1.0"

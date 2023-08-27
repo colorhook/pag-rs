@@ -263,8 +263,6 @@ impl PAGExportSession {
         .build()
         .expect("Failed to create video info");
 
-        let pipeline = self.pipeline.clone();
-        let total_frames2 = total_frames;
 
         let app_src = PAGAppSrc {
             video_info,

@@ -21,8 +21,8 @@
 # 拉取依赖
 ./sync_deps.sh
 # 在 build 目录产生 Makefile
-cmake . -B build -DPAG_BUILD_TESTS=OFF
-# 构建
+cmake . -B build -DPAG_BUILD_TESTS=OFF -DPAG_BUILD_SHARED=OFF -DCMAKE_BUILD_TYPE=Release
+# 构建生成 libpag.a 静态库
 cd build
 make
 ```

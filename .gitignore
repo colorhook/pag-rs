@@ -1,0 +1,10 @@
+.DS_Store
+.vscode/
+Cargo.lock
+debug/
+target/
+**/*.rs.bk
+*.pdb
+examples/*.mp3
+examples/*.mp4
+examples/*.png

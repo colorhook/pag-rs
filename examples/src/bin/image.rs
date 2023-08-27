@@ -24,14 +24,14 @@ fn main() {
         image_layer.content_time_to_layer(100)
     );
 
-    let image = PAGImage::from_path(assets_dir.join("test.png").to_str().unwrap());
+    let image = PAGImage::from_path(assets_dir.join("test.png").to_str().unwrap()).unwrap();
     println!("image width: {:?}", image.width());
     println!("image height: {:?}", image.height());
     println!("image scale_mode: {:?}", image.scale_mode());
     image.set_scale_mode(PAGScaleMode::Zoom);
     println!("image scale_mode: {:?}", image.scale_mode());
 
-    let pag_file = PAGFile::from_file(assets_dir.join("MT2.pag").to_str().unwrap());
+    let pag_file = PAGFile::from_file(assets_dir.join("MT2.pag").to_str().unwrap()).unwrap();
     let layer0 = pag_file.get_layer_at(0).unwrap();
     let layer0: PAGImageLayer = layer0.into();
     println!(

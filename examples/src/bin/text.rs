@@ -5,7 +5,7 @@ fn main() {
     let dir = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
     let assets_dir = dir.join("../third_party/libpag/assets");
 
-    let text_pag = PAGFile::from_file(assets_dir.join("bulgetext.pag").to_str().unwrap());
+    let text_pag = PAGFile::from_file(assets_dir.join("bulgetext.pag").to_str().unwrap()).unwrap();
 
     println!(
         "text_pag get_editable_indices: {:?}",

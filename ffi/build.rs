@@ -10,7 +10,7 @@ fn main() -> miette::Result<()> {
         "cargo:rustc-link-search=all={}",
         pag_dir.join("build").to_string_lossy()
     );
-    println!("cargo:rustc-link-lib={}={}", "static", "pag-static");
+    println!("cargo:rustc-link-lib={}={}", "static", "pag");
 
     let path = std::path::PathBuf::from("src"); // include path
     let mut project = autocxx_build::Builder::new("src/lib.rs", &[&path, &pag_headers]).build()?;
@@ -36,6 +36,7 @@ fn main() -> miette::Result<()> {
             "Foundation",
             "OpenCL",
             "OpenGL",
+            "Metal",
             "QTKit",
             "QuartzCore",
             "Security",
@@ -46,6 +47,8 @@ fn main() -> miette::Result<()> {
             println!("cargo:rustc-link-lib=framework={}", f);
         }
         println!("cargo:rustc-link-lib=iconv");
+        println!("cargo:rustc-link-lib=c");
+        println!("cargo:rustc-link-lib=compression");
     }
 
     println!("cargo:rerun-if-changed=src/lib.rs");

@@ -1,3 +1,4 @@
+#![allow(dead_code)]
 // This example shows how to use the appsrc element.
 // It operates the following pipeline:
 
@@ -74,7 +75,7 @@ impl AppSource {
         }
     }
     pub fn draw(&mut self) {
-        let mut canvas = self.canvas.canvas();
+        let canvas = self.canvas.canvas();
         canvas.clear(Color::WHITE);
         let paint = Paint::default();
 
@@ -145,26 +146,22 @@ impl VideoStream for AppSource {
             let frame = self.current_frame as u64;
             buffer.set_pts(frame * 40 * gst::ClockTime::MSECOND);
 
-            println!("set pts");
-
-            let r = if frame % 2 == 0 { 100 } else { 255 };
-            let g = if frame % 3 == 0 { 0 } else { 255 };
-            let b = if frame % 5 == 0 { 0 } else { 255 };
+            // let r = if frame % 2 == 0 { 100 } else { 255 };
+            // let g = if frame % 3 == 0 { 0 } else { 255 };
+            // let b = if frame % 5 == 0 { 0 } else { 255 };
 
             let mut vframe =
                 gst_video::VideoFrameRef::from_buffer_ref_writable(buffer, &video_info).unwrap();
 
-            let width = vframe.width() as usize;
-            let height = vframe.height() as usize;
+            // let width = vframe.width() as usize;
+            // let height = vframe.height() as usize;
 
-            let stride = vframe.plane_stride()[0] as usize;
+            // let stride = vframe.plane_stride()[0] as usize;
 
             let video_ptr = vframe.plane_data_mut(0).unwrap();
-            let mut canvas = self.canvas.canvas();
-            let copied = canvas.read_pixels(&dst_info, video_ptr, dst_row_bytes * 4, src_point);
+            let canvas = self.canvas.canvas();
+            let _ = canvas.read_pixels(&dst_info, video_ptr, dst_row_bytes * 4, src_point);
 
-            println!("data copied = {:?}", copied);
-            println!("write frame ok");
             // for line in vframe
             //   .plane_data_mut(0)
             //   .unwrap()
@@ -198,7 +195,7 @@ fn create_pipeline() -> Result<gst::Pipeline, Error> {
         .build();
 
     let videoconvert = gst::ElementFactory::make("videoconvert").build()?;
-    let sink = gst::ElementFactory::make("autovideosink").build()?;
+    // let sink = gst::ElementFactory::make("autovideosink").build()?;
 
     let x264enc = gst::ElementFactory::make("x264enc").build()?;
     let mp4mux = gst::ElementFactory::make("mp4mux").build()?;
@@ -221,8 +218,7 @@ fn create_pipeline() -> Result<gst::Pipeline, Error> {
         gst_app::AppSrcCallbacks::builder()
             .need_data(move |appsrc, _| match app_source.poll_frame() {
                 Some(buffer) => {
-                    let s = appsrc.push_buffer(buffer);
-                    println!("poll result: {:?}", s);
+                    let _ = appsrc.push_buffer(buffer);
                 }
                 None => {
                     let _ = appsrc.end_of_stream();

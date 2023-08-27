@@ -25,7 +25,7 @@ fn main() {
     let dir = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
     let assets_dir = dir.join("../third_party/libpag/assets");
 
-    let pag_file = PAGFile::from_file(assets_dir.join("MT2.pag").to_str().unwrap());
+    let pag_file = PAGFile::from_file(assets_dir.join("MT2.pag").to_str().unwrap()).unwrap();
 
     let player = PAGPlayer::new();
     let surface = PAGSurface::make_offscreen(800, 600).unwrap();
@@ -60,6 +60,7 @@ fn main() {
     println!("player.presenting_time {}", player.presenting_time());
     println!("player.graphics_memory {}", player.graphics_memory());
 
+    #[allow(invalid_value)]
     let mut data: [u8; 800 * 600 * 4] = unsafe { std::mem::MaybeUninit::uninit().assume_init() };
     let pixel: &mut c_void = unsafe { std::mem::transmute(&mut data) };
 
